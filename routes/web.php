@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login/discord', 'DiscordController@redirect');
+Route::get('login/discord/callback', 'DiscordController@callback');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
