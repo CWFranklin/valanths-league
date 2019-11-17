@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Socialite;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Socialite;
 
 class DiscordController extends Controller
 {
@@ -18,7 +19,6 @@ class DiscordController extends Controller
     public function callback()
     {
         $userDiscord = Socialite::with('discord')->user();
-        dd($userDiscord);
 
         $users = User::where('provider_id', $userDiscord->getId())->first();
 
@@ -28,12 +28,15 @@ class DiscordController extends Controller
         }
 
         $user = User::create([
+            'provider' => 'discord',
+            'provider_id' => $userDiscord->getId(),
             'name' => $userDiscord->name,
             'nickname' => $userDiscord->nickname,
             'email' => $userDiscord->email,
             'avatar' => $userDiscord->avatar,
         ]);
 
+        Auth::login($user);
         return redirect()->route('home');
     }
 }
