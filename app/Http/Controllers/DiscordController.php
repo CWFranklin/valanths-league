@@ -31,7 +31,7 @@ class DiscordController extends Controller
             ]);
 
             Auth::login($users);
-            return redirect()->route('home');
+            return redirect('/');
         }
 
         $user = User::create([
@@ -44,6 +44,6 @@ class DiscordController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect()->route('home');
+        return redirect('/');
     }
 }

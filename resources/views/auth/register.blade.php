@@ -73,7 +73,7 @@
                     <hr>
 
                     <div class="text-center">
-                        <a href="{{ url('/login/discord') }}" class="btn btn-primary" style="background-color: #7289DA;">Register with Discord</a>
+                        <a href="{{ url('/login/discord') }}" class="btn btn-primary" style="background-color: #7289DA; border-color: #7289DA;">Register with Discord</a>
                     </div>
                 </div>
             </div>

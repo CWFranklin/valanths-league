@@ -58,7 +58,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}" style="color: #212529;">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -69,7 +69,7 @@
                     <hr>
 
                     <div class="text-center">
-                        <a href="{{ url('/login/discord') }}" class="btn btn-primary" style="background-color: #7289DA;">Login with Discord</a>
+                        <a href="{{ url('/login/discord') }}" class="btn btn-primary" style="background-color: #7289DA; border-color: #7289DA;">Login with Discord</a>
                     </div>
                 </div>
             </div>
