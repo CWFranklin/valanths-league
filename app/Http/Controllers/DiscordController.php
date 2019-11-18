@@ -23,6 +23,13 @@ class DiscordController extends Controller
         $users = User::where('provider_id', $userDiscord->getId())->first();
 
         if ($users) {
+            $users->update([
+                'name' => $userDiscord->name,
+                'nickname' => $userDiscord->nickname,
+                'email' => $userDiscord->email,
+                'avatar' => $userDiscord->avatar,
+            ]);
+
             Auth::login($users);
             return redirect()->route('home');
         }
