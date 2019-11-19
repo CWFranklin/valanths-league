@@ -22,8 +22,11 @@ class FreeAgentController extends Controller
      */
     public function index()
     {
+        $ranks = Rank::all()->sortBy('order');
         $freeAgents = User::with('rank')->where('free_agent', true)->get();
+
         return view('freeAgents.list', [
+            'ranks' => $ranks,
             'freeAgents' => $freeAgents,
         ]);
     }
