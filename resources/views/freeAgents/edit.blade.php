@@ -70,7 +70,7 @@
 
                         <div class="form-group">
                             <div class="form-check">
-                                <input id="free_agent" class="form-check-input" type="checkbox" name="free_agent" value="1" @if(old('free_agent')) checked @endif>
+                                <input id="free_agent" class="form-check-input" type="checkbox" name="free_agent" value="1" @if(old('free_agent', Auth::user()->free_agent)) checked @endif>
                                 <label class="form-check-label" for="free_agent">
                                     Enable
                                 </label>
