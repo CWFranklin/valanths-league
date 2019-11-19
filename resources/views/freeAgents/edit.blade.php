@@ -81,13 +81,8 @@
                             <label for="peak_rank">Peak Rank</label>
                             <select class="form-control @error('peak_rank') is-invalid @enderror" name="peak_rank">
                                 <option value="" selected disabled>Please Select</option>
-                                @foreach (['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Master', 'Grand Master', 'Challenger'] as $tier)
-                                    @for ($div = 4; $div > 0; $div--)
-                                        @php
-                                            $rank = $tier . ' ' . $div;
-                                        @endphp
-                                        <option value="{{ $rank }}" @if($rank === Auth::user()->peak_rank) selected @endif>{{ $rank }}</option>
-                                    @endfor
+                                @foreach ($ranks as $rank)
+                                    <option value="{{ $rank->id }}" @if($rank->id === Auth::user()->peak_rank) selected @endif>{{ $rank->name }}</option>
                                 @endforeach
                             </select>
 

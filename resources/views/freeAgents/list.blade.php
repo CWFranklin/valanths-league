@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ $fAgent->league_account }}</h4>
                         <p class="card-text">
-                            <strong>Peak Rank:</strong> <span class="rank">{{ $fAgent->peak_rank }}</span><br>
+                            <strong>Peak Rank:</strong> <span class="rank">{{ $fAgent->rank->name }}</span><br>
                             <strong>Positions:</strong> <span class="positions">{{ implode($posPref, ' / ') }}</span><br>
                             @if(!empty($fAgent->description)) <strong>Comments:</strong> {{ $fAgent->description }} @endif
                         </p>

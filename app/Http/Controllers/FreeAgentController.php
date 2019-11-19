@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rank;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class FreeAgentController extends Controller
      */
     public function index()
     {
-        $freeAgents = User::where('free_agent', true)->get();
+        $freeAgents = User::with('rank')->where('free_agent', true)->get();
         return view('freeAgents.list', [
             'freeAgents' => $freeAgents,
         ]);
@@ -50,7 +51,11 @@ class FreeAgentController extends Controller
             return redirect('/');
         }
 
-        return view('freeAgents.edit');
+        $ranks = Rank::all()->sortBy('order');
+
+        return view('freeAgents.edit', [
+            'ranks' => $ranks,
+        ]);
     }
 
     /**
