@@ -21,7 +21,10 @@ class FreeAgentController extends Controller
      */
     public function index()
     {
-        //
+        $freeAgents = User::where('free_agent', true)->get();
+        return view('freeAgents.list', [
+            'freeAgents' => $freeAgents,
+        ]);
     }
 
     /**
@@ -96,5 +99,3 @@ class FreeAgentController extends Controller
         //
     }
 }
-
-// DM user: https://discordapp.com/channels/@me/ + provider_id

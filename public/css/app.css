@@ -11100,3 +11100,8 @@ a.text-dark:focus {
   }
 }
 
+.btn-discord {
+  background-color: #7289DA;
+  border-color: #7289DA;
+}
+
