@@ -118,12 +118,18 @@
                 positions.push($(e).val())
             })
 
+            //
+
             $('#agents .agent').filter(function() {
-                $(this).toggle(
-                    $(this).text().toLowerCase().indexOf(search) > -1 &&
-                    (rank > -1) ? (parseInt($(this).attr('data-rank')) <= rank) : true &&
-                    checkPositions(positions, $(this).attr('data-pos'))
-                )
+                var hasText = $(this).text().toLowerCase().indexOf(search) > -1
+                var hasPos = checkPositions(positions, $(this).attr('data-pos'))
+                var hasRank = (rank > -1) ? (parseInt($(this).attr('data-rank')) <= rank) : true
+
+                if (hasText & hasPos & hasRank) {
+                    $(this).toggle(true)
+                } else {
+                    $(this).toggle(false)
+                }
             })
         }
 
